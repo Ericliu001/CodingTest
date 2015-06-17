@@ -3,4 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="network_error">Network Error</string>
+    <string name="network_unavailable">Network unavailable, try again later</string>
 </resources>
