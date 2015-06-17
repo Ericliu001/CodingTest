@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.ericliudeveloper.weatherforecast.R;
 import com.ericliudeveloper.weatherforecast.service.RetrieveWeatherDataService;
@@ -18,8 +17,9 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onButtonClicked(View view) {
+    public void refreshWeatherData() {
         checkNetworkAndShowErrorMsg();
+        checkLocationAvailableAndShowErrorMsg();
         Intent intent = new Intent(this, RetrieveWeatherDataService.class);
         startService(intent);
     }
@@ -39,7 +39,8 @@ public class MainActivity extends BaseActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_refresh) {
+            refreshWeatherData();
             return true;
         }
 
