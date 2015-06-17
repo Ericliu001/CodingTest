@@ -1,9 +1,9 @@
-package com.ericliudeveloper.weatherforecast;
+package com.ericliudeveloper.weatherforecast.util;
 
-import android.app.IntentService;
-import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+
+import com.ericliudeveloper.weatherforecast.BuildConfig;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -14,54 +14,20 @@ import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
-public class RetrieveWeatherDataService extends IntentService implements NetworkConstants {
-
-
+/**
+ * Created by liu on 17/06/15.
+ */
+public final class RestfulUtil implements  NetworkConstants{
     private static final String TAG = "REST";
+
+    private RestfulUtil(){}
 
 
     public interface ResponseHandler {
         void handleResponse(BufferedReader in) throws IOException;
     }
 
-
-    public RetrieveWeatherDataService() {
-        super("RetrieveWeatherDataService");
-    }
-
-    @Override
-    protected void onHandleIntent(Intent intent) {
-        handleActionRetrieveWeatherData();
-    }
-
-    /**
-     * Handle action retrieve weather data in the provided background thread with the provided
-     * parameters.
-     */
-    private void handleActionRetrieveWeatherData() {
-        // TODO: Handle action
-
-
-        String urlString = "https://api.forecast.io/forecast/69b4c892f57f9e7cefc65fc4d1fcb941/37.8267,-122.423";
-
-        Uri uri = Uri.parse(urlString);
-        try {
-            sendRequest(uri, null, new ResponseHandler() {
-                @Override
-                public void handleResponse(BufferedReader in) throws IOException {
-
-                   // todo parse and save to db
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    // the return code is being ignored, at present
-    private int sendRequest(
+    public static int sendRequest(
             Uri uri,
             String payload,
             ResponseHandler hdlr)
@@ -115,6 +81,4 @@ public class RetrieveWeatherDataService extends IntentService implements Network
 
         return code;
     }
-
-
 }

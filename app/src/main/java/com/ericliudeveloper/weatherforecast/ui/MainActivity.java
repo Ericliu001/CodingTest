@@ -1,4 +1,4 @@
-package com.ericliudeveloper.weatherforecast;
+package com.ericliudeveloper.weatherforecast.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.ericliudeveloper.weatherforecast.R;
+import com.ericliudeveloper.weatherforecast.service.RetrieveWeatherDataService;
 
 
 public class MainActivity extends ActionBarActivity {

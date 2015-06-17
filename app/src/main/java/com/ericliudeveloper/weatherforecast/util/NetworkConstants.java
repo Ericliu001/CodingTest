@@ -1,4 +1,4 @@
-package com.ericliudeveloper.weatherforecast;
+package com.ericliudeveloper.weatherforecast.util;
 
 /**
  * Created by liu on 17/06/15.

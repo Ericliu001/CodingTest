@@ -141,7 +141,7 @@ public class WeatherProvider extends ContentProvider implements DBConstants.Tabl
 
             case CODE_WEATHERINFOS:
                 idString = uri.getLastPathSegment();
-                count = sb.table(TABLE_WEATHERINFO).where(COL_ROWID + "=?", idString).delete(db);
+                count = sb.table(VIEW_CURRENT_WEATHERINFO).where(COL_ROWID + "=?", idString).delete(db);
                 break;
 
             default:
