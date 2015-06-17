@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ericliudeveloper.weatherforecast" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,6 +23,13 @@
             android:name=".RetrieveWeatherDataService"
             android:exported="false" >
         </service>
+
+        <provider
+            android:name=".provider.WeatherProvider"
+            android:authorities="com.ericliudeveloper.weatherforecast.provider"
+            android:enabled="true"
+            android:exported="false" >
+        </provider>
     </application>
 
 </manifest>
