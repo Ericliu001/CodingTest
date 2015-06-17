@@ -1,5 +1,6 @@
 package com.ericliudeveloper.weatherforecast.ui;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,10 +12,20 @@ import com.ericliudeveloper.weatherforecast.service.RetrieveWeatherDataService;
 
 public class MainActivity extends BaseActivity {
 
+    private String tag = getClass().getName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Fragment frag = getFragmentManager().findFragmentByTag(tag);
+        if (frag == null) {
+            frag = new DisplayWeatherInfoFragment();
+            getFragmentManager().beginTransaction().add(R.id.container, frag, tag).commit();
+        }
+
+        refreshWeatherData();
     }
 
     public void refreshWeatherData() {

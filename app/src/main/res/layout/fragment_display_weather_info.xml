@@ -1,0 +1,116 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ericliudeveloper.weatherforecast.ui.DisplayWeatherInfoFragment">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:stretchColumns="1">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/weather_info"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TableRow
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/content_row_margin_top">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/latitude" />
+
+            <TextView
+                android:id="@+id/tvLatitude"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:text="@string/no_value" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/content_row_margin_top">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/longitude" />
+
+            <TextView
+                android:id="@+id/tvLongitude"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:textStyle="bold"
+                android:text="@string/no_value" />
+        </TableRow>
+
+        <TableRow
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/content_row_margin_top">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/timezone" />
+
+            <TextView
+                android:id="@+id/tvTimezone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:text="@string/no_value" />
+        </TableRow>
+
+
+
+        <TableRow
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/content_row_margin_top">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/summary" />
+
+            <TextView
+                android:id="@+id/tvSummary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:text="No Value" />
+        </TableRow>
+
+        <TableRow
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/content_row_margin_top">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/temperature" />
+
+            <TextView
+                android:id="@+id/tvTemperature"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:text="No Value" />
+        </TableRow>
+
+    </TableLayout>
+
+</FrameLayout>
