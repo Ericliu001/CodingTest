@@ -15,16 +15,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class RetrieveWeatherDataService extends IntentService implements  NetworkConstants{
-
-
-
+public class RetrieveWeatherDataService extends IntentService implements NetworkConstants {
 
 
     private static final String TAG = "REST";
-
-
-
 
 
     public interface ResponseHandler {
@@ -49,7 +43,7 @@ public class RetrieveWeatherDataService extends IntentService implements  Networ
         // TODO: Handle action
 
 
-        String urlString  = "https://api.forecast.io/forecast/69b4c892f57f9e7cefc65fc4d1fcb941/37.8267,-122.423";
+        String urlString = "https://api.forecast.io/forecast/69b4c892f57f9e7cefc65fc4d1fcb941/37.8267,-122.423";
 
         Uri uri = Uri.parse(urlString);
         try {
@@ -57,14 +51,7 @@ public class RetrieveWeatherDataService extends IntentService implements  Networ
                 @Override
                 public void handleResponse(BufferedReader in) throws IOException {
 
-                    String text = "";
-                    String aux = "";
-
-                    while ((aux = in.readLine()) != null) {
-                        text += aux;
-                    }
-
-                    Log.d(TAG, text);
+                   // todo parse and save to db
                 }
             });
         } catch (IOException e) {
@@ -73,14 +60,12 @@ public class RetrieveWeatherDataService extends IntentService implements  Networ
     }
 
 
-
     // the return code is being ignored, at present
     private int sendRequest(
             Uri uri,
             String payload,
             ResponseHandler hdlr)
-            throws IOException
-    {
+            throws IOException {
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "sending " + " @" + uri + ": " + payload);
         }
@@ -119,19 +104,17 @@ public class RetrieveWeatherDataService extends IntentService implements  Networ
                 hdlr.handleResponse(new BufferedReader(
                         new InputStreamReader(conn.getInputStream())));
             }
-        }
-        finally {
+        } finally {
             if (null != conn) {
-                try { conn.disconnect(); } catch (Exception e) { }
+                try {
+                    conn.disconnect();
+                } catch (Exception e) {
+                }
             }
         }
 
         return code;
     }
-
-
-
-
 
 
 }
