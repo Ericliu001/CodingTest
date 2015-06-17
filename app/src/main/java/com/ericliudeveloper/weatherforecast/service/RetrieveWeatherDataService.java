@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
+import android.location.Location;
 import android.net.Uri;
 import android.os.RemoteException;
 import android.util.JsonReader;
@@ -16,6 +17,7 @@ import com.ericliudeveloper.weatherforecast.database.DBConstants;
 import com.ericliudeveloper.weatherforecast.model.WeatherInfo;
 import com.ericliudeveloper.weatherforecast.model.WeatherinfoDAO;
 import com.ericliudeveloper.weatherforecast.provider.ProviderContract;
+import com.ericliudeveloper.weatherforecast.util.LastLocationFinder;
 import com.ericliudeveloper.weatherforecast.util.NetworkConstants;
 import com.ericliudeveloper.weatherforecast.util.Parser;
 import com.ericliudeveloper.weatherforecast.util.RestfulUtil;
@@ -36,18 +38,29 @@ public class RetrieveWeatherDataService extends IntentService implements Network
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        handleActionRetrieveWeatherData();
+
+        Location location = getMyLocation();
+        if (location != null) {
+            String gpsCoordinates = location.getLatitude() + "," + location.getLongitude();
+
+            retrieveWeatherData(gpsCoordinates);
+        }
+
+    }
+
+    private Location getMyLocation() {
+        return LastLocationFinder.getLastBestLocation(1000, 5000);
     }
 
     /**
      * Handle action retrieve weather data in the provided background thread with the provided
      * parameters.
      */
-    private void handleActionRetrieveWeatherData() {
+    private void retrieveWeatherData(String gpsCoordinates) {
         // TODO: Handle action
 
 
-        String urlString = "https://api.forecast.io/forecast/69b4c892f57f9e7cefc65fc4d1fcb941/37.8267,-122.423";
+        String urlString = "https://api.forecast.io/forecast/69b4c892f57f9e7cefc65fc4d1fcb941/" + gpsCoordinates;
 
         Uri uri = Uri.parse(urlString);
         try {

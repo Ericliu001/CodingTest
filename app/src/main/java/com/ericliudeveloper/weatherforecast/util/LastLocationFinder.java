@@ -49,7 +49,7 @@ public class LastLocationFinder {
 	 * Returns the most accurate and timely previously detected location. Where
 	 * the last result is beyond the specified maximum distance or latency a
 	 * one-off location update is returned via the {@link LocationListener}
-	 * 
+	 *
 	 * @param minDistance
 	 *            - meter Minimum distance before we require a location update.
 	 * @param latestTime

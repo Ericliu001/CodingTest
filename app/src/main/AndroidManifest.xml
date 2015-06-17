@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ericliudeveloper.weatherforecast" >
+    package="com.ericliudeveloper.weatherforecast">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,15 +24,13 @@
 
         <service
             android:name=".service.RetrieveWeatherDataService"
-            android:exported="false" >
-        </service>
+            android:exported="false"></service>
 
         <provider
             android:name=".provider.WeatherProvider"
             android:authorities="com.ericliudeveloper.weatherforecast.provider"
             android:enabled="true"
-            android:exported="false" >
-        </provider>
+            android:exported="false"></provider>
     </application>
 
 </manifest>
