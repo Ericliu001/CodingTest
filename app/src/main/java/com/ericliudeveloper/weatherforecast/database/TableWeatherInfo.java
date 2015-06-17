@@ -37,7 +37,7 @@ public class TableWeatherInfo implements DBConstants.TableAndView, DBConstants.W
                     + COL_HUMIDITY + "  "
                     + " from "
                     + TABLE_WEATHERINFO
-                    + " where " + COL_TIME_STAMP + " = " + CURRENT
+                    + " where " + COL_TIME_STAMP + " = " +  "'" + CURRENT + "'"
                     + ";"
             ;
 

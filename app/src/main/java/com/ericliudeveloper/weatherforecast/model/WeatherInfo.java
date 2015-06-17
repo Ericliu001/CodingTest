@@ -9,9 +9,30 @@ public class WeatherInfo {
     private String longitude;
     private String timezone;
 
-    public Currently getCurrently() {
-        return currently;
+
+    String time;
+    String summary;
+    String temperature;
+
+    public String getHumidity() {
+        return humidity;
     }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public String getTemperature() {
+        return temperature;
+    }
+
+    String humidity;
+
+
 
     public String getLatitude() {
         return latitude;
@@ -25,14 +46,21 @@ public class WeatherInfo {
         return timezone;
     }
 
-    private Currently currently;
 
 
     private WeatherInfo(Builder builder) {
         this.latitude = builder.latitude;
         this.longitude = builder.longitude;
         this.timezone = builder.timezone;
-        this.currently = builder.currently;
+
+        setValuesFromCurrently(builder.currently);
+    }
+
+    private void setValuesFromCurrently(Currently currently) {
+        this.time = currently.time;
+        this.summary = currently.summary;
+        this.temperature = currently.temperature;
+        this.humidity = currently.humidity;
     }
 
     public static class Builder{
